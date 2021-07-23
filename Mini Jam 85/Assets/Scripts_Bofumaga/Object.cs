@@ -30,9 +30,9 @@ public class Object : MonoBehaviour
             {
                 Cauldron.instance.recipe_completed.Add(this.ingredients[ID]);
                 Cauldron.instance.recipe.RemoveAt(0);
-                Cauldron.instance.borrado=true;
+                Cauldron.instance.borrado = true;
             }
-        
+
         }
     }
 
