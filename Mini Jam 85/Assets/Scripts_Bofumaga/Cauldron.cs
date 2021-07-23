@@ -13,7 +13,7 @@ public class Cauldron : MonoBehaviour
     public List<string> recipe = new List<string>();
     public List<string> recipe_completed = new List<string>();
 
-    public string[] ingredients = { "Manzana", "Bitcoiner", "Amogus" };
+    public string[] ingredients = { "Ingrediente1", "Ingrediente2", "Ingrediente3" };
     
     void Start()
     {

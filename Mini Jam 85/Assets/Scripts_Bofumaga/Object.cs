@@ -6,7 +6,7 @@ public class Object : MonoBehaviour
 {
     public int ID;
     
-    public string[] ingredients = { "Manzana", "Bitcoiner", "Amogus" };
+    public string[] ingredients = { "Ingrediente1", "Ingrediente2", "Ingrediente3" };
 
 
     // Start is called before the first frame update
