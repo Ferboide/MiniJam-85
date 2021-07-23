@@ -17,7 +17,7 @@ public class Cauldron : MonoBehaviour
     {
         if (instance == null) instance = this;
 
-        for (int i = 0; i <= size; i++)
+        for (int i = 0; i < size; i++)
         {
             recipe.Add(ingredients[Random.Range(0, ingredients.Length)]);
         }
