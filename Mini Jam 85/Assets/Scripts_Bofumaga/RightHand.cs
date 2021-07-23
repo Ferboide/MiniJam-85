@@ -9,9 +9,12 @@ public class RightHand : MonoBehaviour
     public float speed;
     Vector2 mousePosition;
     RaycastHit2D cameraRaycast;
-
-   public bool isGrabbing = false;
+//la mano está cerrada
+   public bool isClosed = false;
+//la mano tiene debajo un objeto
    public bool isObject = false;
+//la mano esta agarrando un objeto
+   public bool isGrabbed = false;
 
     void Start()
     {
@@ -29,38 +32,48 @@ public class RightHand : MonoBehaviour
         {
 
             anim.SetBool("agarrando", true);
-
+            isClosed = true;
         }
 
-        else anim.SetBool("agarrando", false);
+        else {
+            anim.SetBool("agarrando", false);
+            if (Input.GetMouseButtonUp(0)) isClosed = false;
+        }
+        
 
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
-
-
-        if (collision.CompareTag("Ingrediente") && !isGrabbing) {
-            isGrabbing = true;
+        if (collision.CompareTag("Ingrediente")) {
+           
             if (Input.GetMouseButton(0)) {
-
                 collision.gameObject.transform.position = Vector2.Lerp(transform.position, mousePosition, speed);
+               
+                
             
             }
-        
-        }
 
+            
+        }
+ 
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ingrediente")) isObject = true;
+        if (Input.GetMouseButtonDown(0) && isObject && isClosed) isGrabbed = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (Input.GetMouseButtonUp(0) && collision.CompareTag("Ingrediente")) isObject = false;
+
+        if (collision.CompareTag("Ingrediente")) {
+            isObject = false;
+            isClosed = false;
+            isGrabbed = false;
+        }
+    
     }
 }
