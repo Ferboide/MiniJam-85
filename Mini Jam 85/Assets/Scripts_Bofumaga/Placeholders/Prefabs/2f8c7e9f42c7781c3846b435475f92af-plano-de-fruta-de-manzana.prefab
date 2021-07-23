@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2451499816938998646}
   m_Layer: 8
   m_Name: 2f8c7e9f42c7781c3846b435475f92af-plano-de-fruta-de-manzana
-  m_TagString: Untagged
+  m_TagString: Ingrediente
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

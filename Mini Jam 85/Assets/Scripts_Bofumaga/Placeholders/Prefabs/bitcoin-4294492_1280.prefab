@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7991033672230339729}
   m_Layer: 8
   m_Name: bitcoin-4294492_1280
-  m_TagString: Untagged
+  m_TagString: Ingrediente
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

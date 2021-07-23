@@ -8,9 +8,11 @@ public class Cauldron : MonoBehaviour
 
     public int size;
 
+    public bool borrado=false;
 
     public List<string> recipe = new List<string>();
     public List<string> recipe_completed = new List<string>();
+
     public string[] ingredients = { "Ingrediente1", "Ingrediente2", "Ingrediente3" };
     
     void Start()
@@ -27,7 +29,10 @@ public class Cauldron : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+
+
+
     }
 
 

@@ -26,10 +26,14 @@ public class Object : MonoBehaviour
         if (collision.CompareTag("Caldero"))
         {
             Destroy(gameObject);
-            if (Cauldron.instance.recipe[0] == this.ingredients[ID]) {    
+            if (Cauldron.instance.recipe[0] == this.ingredients[ID])
+            {
                 Cauldron.instance.recipe_completed.Add(this.ingredients[ID]);
-                Cauldron.instance.recipe.RemoveAt(0);}
-           
+                Cauldron.instance.recipe.RemoveAt(0);
+                Cauldron.instance.borrado=true;
+                Debug.Log("Ingrediente correcto");
+            }
+            else Debug.Log("Ingrediente incorrecto");
         }
     }
 
