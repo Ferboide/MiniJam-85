@@ -6,7 +6,9 @@ public class RightHand : MonoBehaviour
 {
     public Animator anim;
 
+    public int counter=0;
     public float speed;
+    public float object_speed;
     Vector2 mousePosition;
     RaycastHit2D cameraRaycast;
 //la mano está cerrada
@@ -15,6 +17,8 @@ public class RightHand : MonoBehaviour
    public bool isObject = false;
 //la mano esta agarrando un objeto
    public bool isGrabbed = false;
+
+    public bool estaGrabbed = false;
 
     void Start()
     {
@@ -48,13 +52,12 @@ public class RightHand : MonoBehaviour
         if (collision.CompareTag("Ingrediente")) {
            
             if (Input.GetMouseButton(0)) {
-                collision.gameObject.transform.position = Vector2.Lerp(transform.position, mousePosition, speed);
-               
-                
-            
+                isGrabbed = true;
+                collision.gameObject.transform.position = Vector2.Lerp(transform.position, mousePosition, object_speed);
             }
-
             
+
+
         }
  
 
@@ -73,6 +76,7 @@ public class RightHand : MonoBehaviour
             isObject = false;
             isClosed = false;
             isGrabbed = false;
+            
         }
     
     }
