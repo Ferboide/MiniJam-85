@@ -4,52 +4,62 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public enum Effects { Zigzag, Invert, Transparent, Cloudy }
     public static GameManager instance;
-
-    public GameObject topSpawn, bottomSpawn;
-
+    public GameObject topSpawn, bottomSpawn, particleSys;
     public int score = 0;
-
-    float time;
-
-    public bool isInverted;
-
-    public enum Effects { Zigzag, Invert, Invisible, Cloudy }
-    Effects effect;
+    public float time;
+    Effects currentEffect;
+    public string currentEffectS;
     
     private void Awake()
     {
         if (instance == null) instance = this;
     }
-    // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SwitchEffect(time));
+        StartCoroutine(SwitchEffect());
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (currentEffectS=="Cloudy")
+        {
+            particleSys.SetActive(true);
+        }
+        else if (currentEffectS=="Invert")
+        {
+            topSpawn.SetActive(false);
+            bottomSpawn.SetActive(true);
+        }
+        else if (bottomSpawn)
+        {
+            topSpawn.SetActive(true);
+            bottomSpawn.SetActive(false);
+        }
     }
 
-    Effects currentEffect;
-    IEnumerator SwitchEffect(float time)
+    IEnumerator SwitchEffect()
     {
         yield return new WaitForSeconds(time);
-        switch (effect)
+        currentEffect = (Effects)Random.Range(0, 4);
+        switch (currentEffect)
         {
             case Effects.Zigzag:
+                currentEffectS = "ZigZag";
                 break;
             case Effects.Invert:
+                currentEffectS = "Invert";
                 break;
-            case Effects.Invisible:
+            case Effects.Transparent:
+                currentEffectS = "Transparent";
                 break;
             case Effects.Cloudy:
+                currentEffectS = "Cloudy";
                 break;
             default:
+                currentEffectS = "None";
                 break;
         }
-        StartCoroutine(SwitchEffect(time));
+        StartCoroutine(SwitchEffect());
     }
 }

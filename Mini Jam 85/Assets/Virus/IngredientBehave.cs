@@ -7,17 +7,29 @@ public class IngredientBehave : MonoBehaviour
     Rigidbody2D rb2D;
     SpriteRenderer rndr;
     public float speedX, speedY, alpha;
-    // Start is called before the first frame update
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         rndr = GetComponent<SpriteRenderer>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-
+        switch(GameManager.instance.currentEffectS)
+        {
+            case "ZigZag":
+                ZigZag();
+                break;
+            case "Invert":
+                InvertGravity();
+                break;
+            case "Transparent":
+                Invisibility();
+                break;
+            case "None":
+                DefaultColor();
+                DefaultSpeed();
+                break;
+        }
     }
 
     void DefaultSpeed()
@@ -44,19 +56,5 @@ public class IngredientBehave : MonoBehaviour
     void Invisibility()
     {
         rndr.color = new Color(rndr.color.r, rndr.color.g, rndr.color.b, Mathf.Lerp(rndr.color.a, alpha, 0.15f));
-    }
-
-    void Grab()
-    {
-        transform.position = RightHand.instance.transform.position;
-
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (true)
-        {
-
-        }
     }
 }

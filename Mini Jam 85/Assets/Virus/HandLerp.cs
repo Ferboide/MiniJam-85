@@ -5,13 +5,6 @@ using UnityEngine;
 public class HandLerp : MonoBehaviour
 {
     public Transform handPos;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         transform.position = Vector2.MoveTowards(transform.position, handPos.position, 0.6f);
