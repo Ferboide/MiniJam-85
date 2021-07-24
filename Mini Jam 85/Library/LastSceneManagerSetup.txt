@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Jorge.unity
+- path: Assets/Scenes/Bofumeiga no tocar.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

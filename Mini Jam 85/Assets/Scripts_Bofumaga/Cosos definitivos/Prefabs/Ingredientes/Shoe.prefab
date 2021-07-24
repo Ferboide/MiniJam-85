@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5862704390889255848}
   m_Layer: 0
   m_Name: Shoe
-  m_TagString: Untagged
+  m_TagString: Ingrediente
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
