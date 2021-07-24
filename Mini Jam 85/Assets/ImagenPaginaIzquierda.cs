@@ -8,7 +8,7 @@ public class ImagenPaginaIzquierda : MonoBehaviour
     public bool right;
 
     public GameObject[] ingredients;
-    public string[] ingredients_toString = { "Ingrediente1", "Ingrediente2", "Ingrediente3" };
+    public string[] ingredients_toString;
     Image img;
 
     // Start is called before the first frame update
@@ -29,15 +29,19 @@ public class ImagenPaginaIzquierda : MonoBehaviour
 
         if (!right) {   
             if (cauldron.recipe.Count == 0) gameObject.SetActive(false);
-            ChangeSprite(0,0);
-            ChangeSprite(0,1);
-            ChangeSprite(0,2);
+
+            for (int i = 0; i < ingredients.Length; i++)
+            {
+                ChangeSprite(0, i);
+            }
+           
         }
         if (right){
             if (cauldron.recipe.Count == 1) gameObject.SetActive(false);
-            ChangeSprite(1, 0);
-            ChangeSprite(1, 1);
-            ChangeSprite(1, 2);
+            for (int i = 0; i < ingredients.Length; i++)
+            {
+                ChangeSprite(1, i);
+            }
         }
     }
 
