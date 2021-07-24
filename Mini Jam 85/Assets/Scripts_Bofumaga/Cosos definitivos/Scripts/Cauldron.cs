@@ -14,7 +14,13 @@ public class Cauldron : MonoBehaviour
     public List<string> recipe_completed = new List<string>();
 
     public string[] ingredients;
-    
+
+
+    public AudioClip bubble;
+    public AudioClip splash;
+    public AudioClip error;
+
+    public AudioSource audioSrc;
     void Awake()
     {
         if (instance == null) instance = this;
@@ -24,17 +30,27 @@ public class Cauldron : MonoBehaviour
             recipe.Add(ingredients[Random.Range(0, ingredients.Length)]);
         }
 
+        audioSrc = GetComponent<AudioSource>();
+
+    }
+
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
+       
 
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+     
+    }
 
-  
 }
