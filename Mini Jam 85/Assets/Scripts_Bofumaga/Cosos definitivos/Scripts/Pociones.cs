@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pociones : MonoBehaviour
 {
@@ -22,12 +23,10 @@ public class Pociones : MonoBehaviour
         if (collision.CompareTag("Caldero"))
         {
             Destroy(gameObject);
+            if (dificultad == 1) SceneManager.LoadScene("Easy");
+            if (dificultad == 2) SceneManager.LoadScene("Normal");
+            if (dificultad == 3) SceneManager.LoadScene("Hard");
             
-            /*
-            if (dificultad = 1)
-            if (dificultad = 2)
-            if (dificultad = 3) 
-            */
         }
     }
 }

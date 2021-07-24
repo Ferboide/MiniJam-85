@@ -64,11 +64,11 @@ public class RightHand : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ingrediente")) isObject = true;
+        if (collision.CompareTag("Ingrediente") || collision.CompareTag("Potion")) isObject = true;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ingrediente")) {
+        if (collision.CompareTag("Ingrediente") || collision.CompareTag("Potion")) {
             if (Input.GetMouseButtonDown(0)) {
                 canGrab = false;
                 isGrabbed = true;
@@ -132,7 +132,7 @@ public class RightHand : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Ingrediente")) {
+        if (collision.CompareTag("Ingrediente")|| collision.CompareTag("Potion")) {
             isObject = false;
             
 

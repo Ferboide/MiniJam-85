@@ -15,7 +15,7 @@ public class Cauldron : MonoBehaviour
 
     public string[] ingredients;
     
-    void Start()
+    void Awake()
     {
         if (instance == null) instance = this;
 
