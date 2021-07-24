@@ -883,9 +883,11 @@ MonoBehaviour:
   counter: 0
   speed: 0.125
   object_speed: 0.125
+  grabbedObject: {fileID: 0}
   isClosed: 0
   isObject: 0
   isGrabbed: 0
+  canGrab: 0
   estaGrabbed: 0
 --- !u!212 &1828573078
 SpriteRenderer:
@@ -964,8 +966,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.107333474, y: -0.06436336}
-  m_Size: {x: 4.7288027, y: 5.9887285}
+  m_Offset: {x: -0.37286177, y: -1.2635837}
+  m_Size: {x: 2.9839065, y: 3.1356833}
   m_Direction: 0
 --- !u!50 &1828573081
 Rigidbody2D:

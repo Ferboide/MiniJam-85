@@ -11,9 +11,10 @@ public class RightHand : MonoBehaviour
     public float object_speed;
     Vector2 mousePosition;
 
+    public GameObject grabbedObject;
 
     Rigidbody2D rb2d;
-
+    CapsuleCollider2D c2d;
 
     bool counter_mayor;
 
@@ -23,6 +24,8 @@ public class RightHand : MonoBehaviour
    public bool isObject = false;
 //la mano esta agarrando un objeto
    public bool isGrabbed = false;
+    //puede agarrar ob
+    public bool canGrab = true;
 
     public bool estaGrabbed = false;
 
@@ -30,7 +33,7 @@ public class RightHand : MonoBehaviour
     {
         Cursor.visible = false;
         anim = GetComponent<Animator>();
-        
+        c2d = GetComponent<CapsuleCollider2D>();
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -57,34 +60,61 @@ public class RightHand : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ingrediente")) isObject = true;
-        if (Input.GetMouseButtonDown(0) && isObject && isClosed) isGrabbed = true;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Ingrediente")) {
-            if (Input.GetMouseButtonDown(0)) counter++;           
-            if (Input.GetMouseButton(0) && isGrabbed) {
-                
-                //collision.gameObject.transform.position = Vector2.Lerp(transform.position, mousePosition, object_speed);
+            if (Input.GetMouseButtonDown(0)) {
+                canGrab = false;
+                isGrabbed = true;
+
+
+                grabbedObject = collision.gameObject;
                 Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
 
                 collision.transform.parent = transform;
-                rb.freezeRotation=true;
+                rb.freezeRotation = true;
                 rb.isKinematic = true;
 
+            }
+
+
+            if (Input.GetMouseButton(0)) {
+
+                //collision.gameObject.transform.position = Vector2.Lerp(transform.position, mousePosition, object_speed);
+
+                if (canGrab)
+                {
+  
+                   
+                }
+
+                
+               // c2d.enabled = false;
                
 
 
             }
             if (Input.GetMouseButtonUp(0)) {
+               
                 Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-                collision.transform.parent = null;
-                rb.freezeRotation = false;
-                rb.isKinematic = false;
-                
 
+                // c2d.enabled = true;
+                //c2d.isTrigger = true;
 
-                rb.velocity = rb2d.velocity;
+                if (grabbedObject != null)
+                {
+                    grabbedObject.transform.parent = null;
+                    grabbedObject = null;
+                    rb.freezeRotation = false;
+                    rb.isKinematic = false;
+                }
+                isClosed = false;
+                isGrabbed = false;
+
+                canGrab = true;
+
+                // rb.velocity = rb2d.velocity;
             }
 
 
@@ -99,8 +129,7 @@ public class RightHand : MonoBehaviour
 
         if (collision.CompareTag("Ingrediente")) {
             isObject = false;
-            isClosed = false;
-            isGrabbed = false;
+            
 
             if (Input.GetMouseButtonUp(0)) counter--;
             
