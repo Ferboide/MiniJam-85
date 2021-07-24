@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class TimerScript : MonoBehaviour
 {
 
+    public static TimerScript instance;
+
     public float time;
     public Text timerText;
 
@@ -14,7 +16,7 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (instance == null) instance = this;
     }
 
     // Update is called once per frame
@@ -25,7 +27,17 @@ public class TimerScript : MonoBehaviour
         if (time <= 0)
         {
             TimeUp();
+            Debug.Log("perdiste");
         }
+
+        if (Cauldron.instance.recipe.Count == 0) {
+           
+            Debug.Log("ganaste");
+            this.enabled = false;
+
+        }
+      
+
     }
     void TimeUp()
     {

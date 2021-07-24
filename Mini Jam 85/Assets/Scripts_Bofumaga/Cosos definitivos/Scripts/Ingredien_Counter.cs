@@ -7,7 +7,7 @@ public class Ingredien_Counter : MonoBehaviour
 {
 
     Text text;
-    string size = Cauldron.instance.recipe.Count.ToString();
+    string size;
     public bool dcha;
 
     // Start is called before the first frame update
