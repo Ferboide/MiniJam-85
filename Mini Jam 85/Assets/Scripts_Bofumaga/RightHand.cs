@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RightHand : MonoBehaviour
 {
+    public static RightHand instance;
+
+ 
     public Animator anim;
 
     public int counter=0;
@@ -31,6 +34,8 @@ public class RightHand : MonoBehaviour
 
     void Start()
     {
+        if (instance == null) instance = this;
+
         Cursor.visible = false;
         anim = GetComponent<Animator>();
         c2d = GetComponent<CapsuleCollider2D>();
