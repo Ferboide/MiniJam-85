@@ -52,11 +52,4 @@ public class GameManager : MonoBehaviour
         }
         StartCoroutine(SwitchEffect(time));
     }
-
-    IEnumerator InvertGravity(float time)
-    {
-        //
-        yield return new WaitForSeconds(time);
-    }
-    //BIG OL' ASS AND TITY AND AH UHM OH WOW AWOOGA OOF THAT REALLY GIVES ME AN ERE-- IDEA
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1638485098462577938}
   - component: {fileID: 6505242983320209601}
   - component: {fileID: 2011552034055140706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NO ES EL BRAZALETE GORON
   m_TagString: Ingrediente
   m_Icon: {fileID: 0}

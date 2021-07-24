@@ -1692,6 +1692,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mano
       objectReference: {fileID: 0}
+    - target: {fileID: 401660755516710412, guid: e26e147d2e0511a4d8bdbee29d98592f,
+        type: 3}
+      propertyPath: length
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 401660755516710412, guid: e26e147d2e0511a4d8bdbee29d98592f,
+        type: 3}
+      propertyPath: layer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 401660755516710412, guid: e26e147d2e0511a4d8bdbee29d98592f,
+        type: 3}
+      propertyPath: speed
+      value: 0.125
+      objectReference: {fileID: 0}
     - target: {fileID: 401660755516710414, guid: e26e147d2e0511a4d8bdbee29d98592f,
         type: 3}
       propertyPath: m_LocalPosition.x

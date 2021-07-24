@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9109129065001000998}
   - component: {fileID: -7445882059562254235}
   - component: {fileID: 7898495551507566099}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chalice
   m_TagString: Ingrediente
   m_Icon: {fileID: 0}

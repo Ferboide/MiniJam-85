@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7042849647583205151}
   - component: {fileID: 8898525935254371025}
   - component: {fileID: 5862704390889255848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shoe
   m_TagString: Ingrediente
   m_Icon: {fileID: 0}

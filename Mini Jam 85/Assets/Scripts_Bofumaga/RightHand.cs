@@ -6,21 +6,25 @@ public class RightHand : MonoBehaviour
 {
     public static RightHand instance;
 
- 
     public Animator anim;
+    public LayerMask layer;
+    public float length;
 
     public int counter=0;
     public float speed;
-    public float object_speed;
+
+    public bool damedame = false;
     Vector2 mousePosition;
 
     public GameObject grabbedObject;
 
+    RaycastHit2D hit;
+
     Rigidbody2D rb2d;
     CapsuleCollider2D c2d;
 
-    bool counter_mayor;
-
+   // bool counter_mayor;
+/*
 //la mano está cerrada
    public bool isClosed = false;
 //la mano tiene debajo un objeto
@@ -31,7 +35,7 @@ public class RightHand : MonoBehaviour
     public bool canGrab = true;
 
     public bool estaGrabbed = false;
-
+*/
     void Start()
     {
         if (instance == null) instance = this;
@@ -46,41 +50,74 @@ public class RightHand : MonoBehaviour
     void Update()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-       
+
+
         transform.position=Vector2.Lerp(transform.position, mousePosition, speed);
+
+        hit = Physics2D.Raycast(transform.position, Vector2.up, length, layer);
+        Debug.DrawRay(transform.position, Vector2.up,Color.red);
+        Debug.Log(hit);
+
+        if (Input.GetMouseButtonDown(0) && hit) {
+
+            grabbedObject = hit.collider.gameObject;
+        
+        
+        }
+
+
+        if (Input.GetMouseButton(0) && grabbedObject !=null)
+        {
+            Rigidbody2D rb = grabbedObject.GetComponent<Rigidbody2D>();
+            rb.freezeRotation = true;
+            rb.isKinematic = true;
+            grabbedObject.transform.position = transform.position;
+            damedame = true;
+        }   
+        if (Input.GetMouseButtonUp(0) && grabbedObject != null) {
+
+            Rigidbody2D rb = grabbedObject.GetComponent<Rigidbody2D>();
+            rb.freezeRotation = false;
+            rb.isKinematic = false;
+            damedame = false;
+
+            rb.velocity = rb2d.velocity;
+
+            grabbedObject = null;
+        }
+
         if (Input.GetMouseButton(0))
         {
-
             anim.SetBool("agarrando", true);
-            isClosed = true;
+            //  isClosed = true;
         }
 
         else {
             anim.SetBool("agarrando", false);
-            if (Input.GetMouseButtonUp(0)) isClosed = false;
+           
         }
         
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ingrediente") || collision.CompareTag("Potion")) isObject = true;
+       // if (collision.CompareTag("Ingrediente") || collision.CompareTag("Potion"))// isObject = true;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Ingrediente") || collision.CompareTag("Potion")) {
             if (Input.GetMouseButtonDown(0)) {
-                canGrab = false;
-                isGrabbed = true;
+             //   canGrab = false;
+               // isGrabbed = true;
 
-
+/*
                 grabbedObject = collision.gameObject;
                 Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
 
                 collision.transform.parent = transform;
                 rb.freezeRotation = true;
                 rb.isKinematic = true;
-
+*/
             }
 
 
@@ -88,11 +125,7 @@ public class RightHand : MonoBehaviour
 
                 //collision.gameObject.transform.position = Vector2.Lerp(transform.position, mousePosition, object_speed);
 
-                if (canGrab)
-                {
-  
-                   
-                }
+             
 
                 
                // c2d.enabled = false;
@@ -101,7 +134,7 @@ public class RightHand : MonoBehaviour
 
             }
             if (Input.GetMouseButtonUp(0)) {
-               
+             /*  
                 Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
 
                 // c2d.enabled = true;
@@ -112,12 +145,12 @@ public class RightHand : MonoBehaviour
                     grabbedObject.transform.parent = null;
                     grabbedObject = null;
                     rb.freezeRotation = false;
-                    rb.isKinematic = false;
+                    rb.isKinematic = false; */
                 }
-                isClosed = false;
-                isGrabbed = false;
+            //    isClosed = false;
+            //    isGrabbed = false;
 
-                canGrab = true;
+            //    canGrab = true;
 
                 // rb.velocity = rb2d.velocity;
             }
@@ -129,11 +162,11 @@ public class RightHand : MonoBehaviour
     }
 
 
-    private void OnTriggerExit2D(Collider2D collision)
+   /* private void OnTriggerExit2D(Collider2D collision)
     {
 
         if (collision.CompareTag("Ingrediente")|| collision.CompareTag("Potion")) {
-            isObject = false;
+            //isObject = false;
             
 
             if (Input.GetMouseButtonUp(0)) counter--;
@@ -143,5 +176,5 @@ public class RightHand : MonoBehaviour
      
 
 
-    }
-}
+    } */
+//}

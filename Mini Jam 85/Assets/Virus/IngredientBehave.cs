@@ -38,7 +38,7 @@ public class IngredientBehave : MonoBehaviour
 
     void InvertGravity()
     {
-        rb2D.velocity = new Vector2(rb2D.velocity.x, Mathf.Abs(speedY));
+        rb2D.velocity = new Vector2(rb2D.velocity.x, Mathf.Abs(rb2D.velocity.y));
     }
 
     void Invisibility()
@@ -48,6 +48,15 @@ public class IngredientBehave : MonoBehaviour
 
     void Grab()
     {
-        
+        transform.position = RightHand.instance.transform.position;
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (true)
+        {
+
+        }
     }
 }
